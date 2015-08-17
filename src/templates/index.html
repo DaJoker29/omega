@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="nav navbar-inverse navbar-fixed-top">
+
+    <!-- Navbar -->
+    <nav class="nav navbar navbar-inverse navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
@@ -31,22 +33,91 @@
                         <p class="navbar-text">Signed in as Dewitt</p>
                     </li>
                     <li>
-                        <a href="#settings" class="navbar-link"> <i class="glyphicon glyphicon-cog"></i> Settings</a>
+                        <a href="#logout" class="navbar-link">Log Out</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-        <ul class="nav nav-justified">
-            <li role="presentation" class="active"><a href="#">Hermes</a></li>
-            <li role="presentation"><a href="#">Harriet</a></li>
-            <li role="presentation"><a href="#">Planner</a></li>
-        </ul>
 
-        <div class="well well-lg" id="content">
-            
+    <div class="container">
+        <!-- Menus (Accordion) -->
+        <div class="panel-group" id="menus" role="tablist" aria-multiselectable="true">
+            <!-- Apps -->
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="appsHeading">
+                    <h4 class="panel-title">
+                        <a href="#apps" role="button" data-toggle="collapse" aria-expanded="false" data-parent="#menus" aria-controls="apps">
+                        <i class="glyphicon glyphicon-th"></i> Apps</a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse" role="tabpanel" id="apps" aria-labelledby="appsHeading">
+                    <div class="list-group">
+                         <a href="#" class="list-group-item list-group-item-success">Hermes</a>
+                         <a href="#" class="list-group-item list-group-item-success active">Harriet the Spy</a>
+                         <a href="#" class="list-group-item list-group-item-success">Project Planner</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="panel panel-warning">
+                <div class="panel-heading" role="tab" id="settingsHeading">
+                    <h4 class="panel-title">
+                        <a href="#settings" role="button" data-toggle="collapse" aria-expanded="false" data-parent="#menus" aria-controls="settings">
+                        <i class="glyphicon glyphicon-cog"></i> Settings</a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse" role="tabpanel" id="settings" aria-labelledby="settingsHeading">
+                    <ul class="list-group">
+                         <li class="list-group-item list-group-item-warning">
+                             <label for="displayName">Display Name</label>
+                             <select name="displayName" id="displayName" class="form-control">
+                                 <option value="facebook">Dewitt Buckingham</option>
+                                 <option value="twitter">Zero Daedalus</option>
+                                 <option value="github">DaJoker29</option>
+                             </select>
+                         </li>
+                         <li class="list-group-item list-group-item-warning">
+                            <label>Linked Accounts</label>
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-warning">
+                                    <label for=""><span class="glyphicon glyphicon-remove"></span>&nbsp;Google</label>&nbsp;&bull;&nbsp;<a href="#">Link</a>                       
+                                </li>
+                                <li class="list-group-item list-group-item-warning">
+                                    <label for=""><span class="glyphicon glyphicon-ok"></span>&nbsp;Facebook</label>&nbsp;&bull;&nbsp;<a href="#">Unlink</a>                       
+                                </li>
+                                <li class="list-group-item list-group-item-warning">
+                                    <label for=""><span class="glyphicon glyphicon-ok"></span>&nbsp;Twitter</label>&nbsp;&bull;&nbsp;<a href="#">Unlink</a>                       
+                                </li>
+                                <li class="list-group-item list-group-item-warning">
+                                    <label for=""><span class="glyphicon glyphicon-ok"></span>&nbsp;GitHub</label>&nbsp;&bull;&nbsp;<a href="#">Unlink</a>                       
+                                </li>
+                            </ul>
+                         </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Window -->
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="windowHeading">
+                    <h4 class="panel-title">
+                        <a href="#mainWindow" role="button" data-toggle="collapse" aria-expanded="false" data-parent="#menus" aria-controls="mainWindow">
+                        <i class="glyphicon glyphicon-star"></i> Window</a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse" role="tabpanel" id="mainWindow" aria-labelledby="windowHeading">
+                    <div class="panel-body">
+                        <h2 class="text-center">The app runs here</h2>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
+
     
 
     <!-- jQuery -->
