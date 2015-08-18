@@ -8,11 +8,39 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- Omega -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body ng-app="omega" ng-controller="MainController as main">
+
+    <div id="signin" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Sign-In</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <a href="#" type="button" class="btn btn-lg btn-block btn-social btn-google">
+                            <i class="fa fa-google"></i> Sign in with Google
+                        </a>
+                        <a href="#" type="button" class="btn btn-lg btn-block btn-social btn-facebook">
+                            <i class="fa fa-facebook"></i> Sign in with Facebook
+                        </a>
+                        <a href="#" type="button" class="btn btn-lg btn-block btn-social btn-twitter">
+                            <i class="fa fa-twitter"></i> Sign in with Twitter
+                        </a>
+                        <a href="#" type="button" class="btn btn-lg btn-block btn-social btn-github">
+                            <i class="fa fa-github"></i> Sign in with GitHub
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Navbar -->
     <nav class="nav navbar navbar-inverse navbar-static-top">
@@ -30,10 +58,10 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <p class="navbar-text">Signed in as Dewitt</p>
+                        <p class="navbar-text" ng-bind="(main.user) ? 'Signed in as ' + main.user.displayName : '';"></p>
                     </li>
                     <li>
-                        <a href="#logout" class="navbar-link">Log Out</a>
+                        <a href="#logout" class="navbar-link" ng-show="(main.user)">Log Out</a>
                     </li>
                 </ul>
             </div>

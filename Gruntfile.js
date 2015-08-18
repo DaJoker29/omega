@@ -32,7 +32,7 @@ module.exports = function(grunt) {
             dev: {
                 expand: true,
                 cwd: 'src/scss',
-                src: ['**/*.scss'],
+                src: ['style.scss'],
                 dest: 'dist',
                 ext: '.css',
                 options: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             prod: {
                expand: true,
                 cwd: 'src/scss',
-                src: ['**/*.scss'],
+                src: ['style.scss'],
                 dest: 'dist',
                 ext: '.css',
                 options: {
@@ -109,10 +109,16 @@ module.exports = function(grunt) {
         },
         eslint: {
             target: ['src/js/**/*.js']
+        },
+        ngAnnotate: {
+            files: {
+                expand: true,
+                src: ['src/js/**/*.js']
+            }
         }
     });
 
-    grunt.registerTask('dev', 'Build development version of project', ['clean', 'copy', 'eslint', 'uglify:dev', 'sass:dev', 'postcss:dev']);
-    grunt.registerTask('prod', 'Build production version of project', ['clean', 'copy', 'eslint', 'uglify:prod', 'sass:prod', 'postcss:prod']);
+    grunt.registerTask('dev', 'Build development version of project', ['clean', 'copy', 'ngAnnotate', 'eslint', 'uglify:dev', 'sass:dev', 'postcss:dev']);
+    grunt.registerTask('prod', 'Build production version of project', ['clean', 'copy', 'ngAnnotate', 'eslint', 'uglify:prod', 'sass:prod', 'postcss:prod']);
     grunt.registerTask('default', 'Build development version and run watch server', ['dev', 'watch']);
 };
