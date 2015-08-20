@@ -9,7 +9,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['src/js/**/*.js'],
-                tasks: ['jshint', 'uglify:dev']
+                tasks: ['ngAnnotate', 'eslint', 'uglify:dev']
             },
             templates: {
                 files: ['src/templates/**/*.*'],
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
             dev: {
                 expand: true,
                 cwd: 'src/scss',
-                src: ['**/*.scss'],
+                src: ['style.scss'],
                 dest: 'dist',
                 ext: '.css',
                 options: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             prod: {
                expand: true,
                 cwd: 'src/scss',
-                src: ['**/*.scss'],
+                src: ['style.scss'],
                 dest: 'dist',
                 ext: '.css',
                 options: {
@@ -67,22 +67,6 @@ module.exports = function(grunt) {
         },
         clean: {
             all: ['dist/']
-        },
-        jshint: {
-            options: {
-                'bitwise': true,
-                'camelcase': true,
-                'curly': true,
-                'eqeqeq': true,
-                'eqnull': true,
-                'expr': true,
-                'immed': true,
-                'newcap': true,
-                'noarg': true,
-                'quotmark': true,
-                'browser': true
-            },
-            src: ['src/js/**/*.js']
         },
         uglify: {
             dev: {
@@ -122,10 +106,24 @@ module.exports = function(grunt) {
                 dest: 'dist/vendor',
                 expand: true
             }
+        },
+        eslint: {
+            target: ['src/js/**/*.js']
+        },
+        ngAnnotate: {
+            options: {
+                add: true,
+                remove: true,
+                singleQuotes: true
+            },
+            files: {
+                expand: true,
+                src: ['src/js/**/*.js']
+            }
         }
     });
 
-    grunt.registerTask('dev', 'Build development version of project', ['clean', 'copy', 'jshint', 'uglify:dev', 'sass:dev', 'postcss:dev']);
-    grunt.registerTask('prod', 'Build production version of project', ['clean', 'copy', 'jshint', 'uglify:prod', 'sass:prod', 'postcss:prod']);
+    grunt.registerTask('dev', 'Build development version of project', ['clean', 'copy', 'ngAnnotate', 'eslint', 'uglify:dev', 'sass:dev', 'postcss:dev']);
+    grunt.registerTask('prod', 'Build production version of project', ['clean', 'copy', 'ngAnnotate', 'eslint', 'uglify:prod', 'sass:prod', 'postcss:prod']);
     grunt.registerTask('default', 'Build development version and run watch server', ['dev', 'watch']);
 };
