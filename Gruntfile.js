@@ -9,7 +9,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['src/js/**/*.js'],
-                tasks: ['eslint', 'uglify:dev']
+                tasks: ['ngAnnotate', 'eslint', 'uglify:dev']
             },
             templates: {
                 files: ['src/templates/**/*.*'],
@@ -111,6 +111,11 @@ module.exports = function(grunt) {
             target: ['src/js/**/*.js']
         },
         ngAnnotate: {
+            options: {
+                add: true,
+                remove: true,
+                singleQuotes: true
+            },
             files: {
                 expand: true,
                 src: ['src/js/**/*.js']
